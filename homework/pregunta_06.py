@@ -26,3 +26,25 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+    conteo = {}
+    with open('files/input/data.csv', 'r') as file:
+        for line in file:
+            columns = line.strip().split('\t')
+            dictionary = columns[4]
+            for item in dictionary.split(','):
+                key, value=item.split(':')
+                value = int(value)
+                if key in conteo:
+                    if value > conteo[key][1]:
+                        conteo[key][1] = value
+                    if value < conteo[key][0]:
+                        conteo[key][0] = value
+                else:
+                    conteo[key] = [value, value]
+    resultado = [(key, value[0], value[1]) for key, value in conteo.items()]
+
+    return sorted(resultado)
+
+
+                
+                

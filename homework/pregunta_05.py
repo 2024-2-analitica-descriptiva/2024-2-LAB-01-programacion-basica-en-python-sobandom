@@ -15,6 +15,7 @@ def pregunta_05():
     [('A', 9, 2), ('B', 9, 1), ('C', 9, 0), ('D', 8, 3), ('E', 9, 1)]
 
     """
+    conteo = {}
     with open('files/input/data.csv', 'r') as file:
         for line in file:
             columns = line.strip().split('\t')
@@ -27,3 +28,7 @@ def pregunta_05():
                     conteo[letra][1] = valor
             else:
                 conteo[letra] = [valor, valor]
+    resultado = sorted([(key, value[0], value[1]) for key, value in conteo.items()])
+    return resultado
+
+print(pregunta_05())

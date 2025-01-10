@@ -16,3 +16,12 @@ def pregunta_11():
 
 
     """
+    dictionary = {}
+    with open('files/input/data.csv', 'r') as file:
+        for line in file:
+            columns = line.strip().split('\t')
+            for key in columns[3].split(','):
+                if key not in dictionary:
+                    dictionary[key] = 0
+                dictionary[key] += int(columns[1])
+    return {k: v for k, v in dictionary.items()}

@@ -24,3 +24,15 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+    conteo = {}
+    with open('files/input/data.csv', 'r') as file:
+        for line in file:
+            columns = line.strip().split('\t')
+            dictionary = columns[4]
+            for item in dictionary.split(','):
+                key, value = item.split(':')
+                if key not in conteo:
+                    conteo[key] = 1
+                else:
+                    conteo[key] += 1
+    return conteo

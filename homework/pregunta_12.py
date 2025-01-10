@@ -15,3 +15,16 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
+    conteo = {}
+    with open('files/input/data.csv', 'r') as file:
+        for line in file:
+            columns = line.strip().split('\t')
+            key = columns[0]
+            valores = [int(v.split(':')[1]) for v in columns[4].split(',')]
+            value = sum(valores)
+            if key not in conteo:
+                conteo[key] = value
+            else:
+                conteo[key] += value
+    return conteo
+
